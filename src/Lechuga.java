@@ -14,15 +14,15 @@ public class Lechuga {
         return tipoLechuga;
         
     }
-    public void setTipoLechuga(tipolchg){
+    public void setTipoLechuga(String tipolchg){
         this.tipoLechuga = tipolchg;
     }
     
     //procedencia
-    public getProcedencia(){
+    public String getProcedencia(){
         return procedencia;
     }
-    public void setProcedencia(proclchg){
+    public void setProcedencia(String proclchg){
         this.procedencia = proclchg;
     }
     
@@ -31,7 +31,7 @@ public class Lechuga {
         return color;
     }
     
-    public void setColor(colchg){
+    public void setColor(String colchg){
         this.color = colchg;
     }
     
@@ -40,7 +40,14 @@ public class Lechuga {
         return eurosUnidad;
     }
     
-    public void setEurosUnidad(precuni){
+    public void setEurosUnidad(Double precuni){
         this.eurosUnidad = precuni;
     }
+    
+    public Distribuidor getDistribuidor() {
+		return this.distribuidor;
+	}
+	public void setDistribuidor(Distribuidor distri) {
+		this.distribuidor = distri;
+	}
 }

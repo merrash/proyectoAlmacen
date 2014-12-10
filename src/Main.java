@@ -14,7 +14,7 @@ public class Main{
 		System.out.println("Salir..........................................0");
 		System.out.println("================================================");
 		
-		Scanner sc = Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		ArrayList<Distribuidor> distribuidores = new ArrayList<Distribuidor>();
 		int elec = sc.nextInt();
 		while(elec!=0){
@@ -25,7 +25,6 @@ public class Main{
         
         			try {
 			
-						ArrayList<Distribuidor> distribuidores = new ArrayList<Distribuidor>();
 						FileInputStream fis = new FileInputStream("distribuidores.txt");
 						InputStreamReader isr = new InputStreamReader(fis, "UTF8");
 						BufferedReader br = new BufferedReader(isr);
@@ -118,7 +117,7 @@ public class Main{
 						lechuga.setEurosUnidad(sc.nextDouble());
 						System.out.println("\nNombre del distribuidor: ");
 						Distribuidor distribuidor = new Distribuidor();
-						distribuidor.setNombre(sc.next);
+						distribuidor.setNombre(sc.next());
 						for (int d = 0; d < distribuidores.size(); d++) {
 							if ((distribuidores.get(d).getNombre()).equalsIgnoreCase(distribuidor.getNombre())) {
 								lechuga.setDistribuidor(distribuidores.get(d));
@@ -133,10 +132,10 @@ public class Main{
 					for (int p = 0; p < lechugas.size(); p++) {
 						System.out.println("Lechuga nº" + (p + 1));
 						System.out.println("----------------------------------------------------");
-						System.out.println("Tipo de lechuga: "+(lechugas.get(m).getTipoLechuga()));
-						System.out.println("Prcedencia: "+(lechugas.get(m).getProcedencia()));
-						System.out.println("Color: "+(lechugas.get(m).getColor()));
-						System.out.println("€/Kg: "+(lechugas.get(m).getEurosUnidad()));
+						System.out.println("Tipo de lechuga: "+(lechugas.get(p).getTipoLechuga()));
+						System.out.println("Prcedencia: "+(lechugas.get(p).getProcedencia()));
+						System.out.println("Color: "+(lechugas.get(p).getColor()));
+						System.out.println("€/Kg: "+(lechugas.get(p).getEurosUnidad()));
 						Distribuidor distribuidor = lechugas.get(p).getDistribuidor();
 						System.out.println("Distribuidor: ");
 						System.out.println("\tNombre: "+distribuidor.getNombre());
@@ -173,7 +172,7 @@ public class Main{
 						System.out.println("\nPrecio/kg: ");
 						manzana.setEurosKilo(sc.nextDouble());
 						System.out.println("\nNombre del Distribuidor: ");
-						Distribuidor distribuidor = Distribuidor();
+						Distribuidor distribuidor = new Distribuidor();
 						distribuidor.setNombre(sc.next());
 						for (int d = 0; d <distribuidores.size(); d++) {
 							if ((distribuidores.get(d).getNombre()).equalsIgnoreCase(distribuidor.getNombre())) {
@@ -186,7 +185,7 @@ public class Main{
 					System.out.println("\nManzanas elegidas: \n");
 					
 					for (int m = 0; m < manzanas.size(); m++) {
-						System.out.println("Manzana nº" + (p + 1));
+						System.out.println("Manzana nº" + (m + 1));
 						System.out.println("----------------------------------------------------");
 						System.out.println("Tipo de Manzana: "+(manzanas.get(m).getTipoManzana()));
 						System.out.println("Prcedencia: "+(manzanas.get(m).getProcedencia()));
@@ -226,7 +225,7 @@ public class Main{
 						System.out.println("\nPrecio/litro: ");
 						leche.setEurosLitro(sc.nextDouble());
 						System.out.println("\nNombre del Distribuidor: ");
-						Distribuidor distribuidor = Distribuidor();
+						Distribuidor distribuidor = new Distribuidor();
 						distribuidor.setNombre(sc.next());
 						for (int d = 0; d <distribuidores.size(); d++) {
 							if ((distribuidores.get(d).getNombre()).equalsIgnoreCase(distribuidor.getNombre())) {
@@ -241,7 +240,7 @@ public class Main{
 					for (int l = 0; l < leches.size(); l++) {
 						System.out.println("Leche nº" + (l + 1));
 						System.out.println("----------------------------------------------------");
-						System.out.println("Tipo de Leche: "+(leches.get(l).getTipoManzana()));
+						System.out.println("Tipo de Leche: "+(leches.get(l).getTipo()));
 						System.out.println("Prcedencia: "+(leches.get(l).getProcedencia()));
 						System.out.println("€/Litro: "+(leches.get(l).getEurosLitro()));
 						Distribuidor distribuidor = leches.get(l).getDistribuidor();

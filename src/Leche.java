@@ -1,4 +1,4 @@
-public class leche {
+public class Leche {
 
     //propiedades
     private String tipo;
@@ -9,19 +9,19 @@ public class leche {
     //métodos getter y setter
     
     //tipo leche
-    public getTipo(){
+    public String getTipo(){
         return tipo;
     }
     
-    public void setTipo(tipoleche){
+    public void setTipo(String tipoleche){
         this.tipo = tipoleche;
     }
     
     //procedencia
-     public getProcedencia(){
+     public String getProcedencia(){
         return procedencia;
     }
-    public void setProcedencia(procleche){
+    public void setProcedencia(String procleche){
         this.procedencia = procleche;
     }
     
@@ -30,7 +30,14 @@ public class leche {
         return eurosLitro;
     }
     
-    public void setEurosLitro(preclitro){
+    public void setEurosLitro(Double preclitro){
         this.eurosLitro = preclitro;
     }
+    
+    public Distribuidor getDistribuidor() {
+		return this.distribuidor;
+	}
+	public void setDistribuidor(Distribuidor distri) {
+		this.distribuidor = distri;
+	}
 }

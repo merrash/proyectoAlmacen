@@ -13,15 +13,15 @@ public class Manzana {
 	public String getTipoManzana(){
 		return tipoManzana;
 	}
-	public void setTipoManzana(tipomnz){
-		this.tipoManzana = tipo;
+	public void setTipoManzana(String tipomnz){
+		this.tipoManzana = tipomnz;
 	}
 
     //procedencia
     public String getProcedencia(){
         return procedencia;
     }			
-    public void setProcedencia(proc){
+    public void setProcedencia(String proc){
         this.procedencia = proc;
     }
     
@@ -30,16 +30,23 @@ public class Manzana {
         return color;
     }
     
-    public void setColor(colmnz){
-        this.color = col;
+    public void setColor(String colmnz){
+        this.color = colmnz;
     }
     // precio al kilo
     public Double getEurosKilo(){
         return eurosKilo;
     }
-    public void setEurosKilo(precio){
+    public void setEurosKilo(Double precio){
         this.eurosKilo = precio;
     }
+   
+    public Distribuidor getDistribuidor() {
+		return this.distribuidor;
+	}
+	public void setDistribuidor(Distribuidor distri) {
+		this.distribuidor = distri;
+	}
     
     
 }
