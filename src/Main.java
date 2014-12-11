@@ -15,11 +15,12 @@ public class Main{
 		System.out.println("================================================");
 		
 		Scanner sc = new Scanner(System.in);
+		//crear arraylist distribuidores
 		ArrayList<Distribuidor> distribuidores = new ArrayList<Distribuidor>();
 		int elec = sc.nextInt();
 		while(elec!=0){
 			switch(elec){
-				case 1:
+				case 1: //distribuidores
 			
 		
         
@@ -69,7 +70,7 @@ public class Main{
 							distribuidores.add(distribuidor);
 							linea = br.readLine();
 						}
-
+						//mostrar distribuidores
 						for(int i=0; i < distribuidores.size(); i++) {
 							Direccion direc = new Direccion();
 							Contacto contact = new Contacto();
@@ -99,7 +100,7 @@ public class Main{
 					}
 				break;
 				
-				case 2:
+				case 2: //lechugas
 		
 					ArrayList<Lechuga> lechugas = new ArrayList<Lechuga>();
 					System.out.println("\nCuantas lechugas son?: ");
@@ -126,7 +127,7 @@ public class Main{
 						lechugas.add(lechuga);
 			
 					} 
-					
+					//leer lechugas
 					System.out.println("\nLechugas elegidas: \n");
 		
 					for (int p = 0; p < lechugas.size(); p++) {
@@ -155,7 +156,7 @@ public class Main{
 					}
 				break;
 				
-				case 3:
+				case 3://manzanas
 					
 					ArrayList<Manzana> manzanas = new ArrayList<Manzana>();
 					System.out.println("\nCuantas Manzanas quieres añadir a la lista?: ");
@@ -181,7 +182,7 @@ public class Main{
 						}
 						manzanas.add(manzana);
 					} 
-					
+					//leer manzanas
 					System.out.println("\nManzanas elegidas: \n");
 					
 					for (int m = 0; m < manzanas.size(); m++) {
@@ -210,7 +211,7 @@ public class Main{
 					} 
 				break;
 				
-				case 4:
+				case 4://leches
 					
 					ArrayList<Leche> leches = new ArrayList<Leche>();
 					System.out.println("\nCuantas Leches quieres añadir a la lista?: ");
@@ -234,7 +235,7 @@ public class Main{
 						}
 						leches.add(leche);
 					} 
-					
+					//leer leches
 					System.out.println("\nLas leches insertadas: ");
 					
 					for (int l = 0; l < leches.size(); l++) {
@@ -264,9 +265,119 @@ public class Main{
 				default:
 					System.out.println("\nNo existe esta opción!");
 				break;
-			}
 				
+				case 5: //clientes
+					ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+					try {
 					
+						FileInputStream fis = new FileInputStream("clientes.txt");
+						InputStreamReader isr = new InputStreamReader(fis, "UTF8");
+						BufferedReader br = new BufferedReader(isr);
+						String linea = br.readLine();
+						while(linea!=null){
+							String[] bloques = linea.split("#");//dividir lineas en bloques entre "#"
+							String bloque1 = bloques[0];//definir nombres de los bloques
+							String bloque2 = bloques[1];
+							
+							
+							
+							//dividir los bloques en campos
+							//BLOQUE1 (nombre,apellido,dni)
+							String[] campo = bloque1.split(","); //bloques[0].split
+							String nomcl = campo[0];
+							Cliente cliente = new Cliente();
+							cliente.setNombre(nomcl);
+							String ap = campo[1];
+							cliente.setApellidos(ap);
+							String ni = campo[2];
+							cliente.setDni(ni);
+							Direccion direccion = new Direccion();
+							campo = bloque2.split(",");
+							String nomcalle = campo[0];
+							direccion.setNombreCalle(nomcalle);
+							int entero = Integer.parseInt(campo[1]);
+							direccion.setNumeroPabellon(entero);
+							entero = Integer.parseInt(campo[2]);
+							direccion.setCodigoPostal(entero);
+							String loc = campo[3];
+							direccion.setLocalidad(loc);
+							String prov = campo[4];
+							direccion.setProvincia(prov);
+						}
+						
+						for(int c=0; c < clientes.size(); c++) {
+								Direccion direc = new Direccion();
+								Cliente cliente = new Cliente();
+								System.out.println("\nCliente nº: " + (c + 1));
+								System.out.println("============================================");
+								System.out.println("Nombre: " + (clientes.get(c).getNombre()));
+								System.out.println("Apellidos: " + (clientes.get(c).getApellidos()));
+								System.out.println("DNI: " + (clientes.get(c).getDni()));
+								direc = clientes.get(c).getDireccion();
+								System.out.println("Direccion: ");
+								System.out.println("\tCalle: " + direc.getNombreCalle());
+								System.out.println("\tNumero: " + direc.getNumeroPabellon());
+								System.out.println("\tCodigo postal: " + direc.getCodigoPostal());
+								System.out.println("\tLocalidad: " + direc.getLocalidad());
+								System.out.println("\tProvincia: " + direc.getProvincia());
+								System.out.println("============================================");
+							}
+					}catch(Exception io) {
+						System.out.println("Error: "+io);
+					}
+				break;
+			
+			case 6: //leer clientes 2 y meterlo en arraylist cesta
+				
+				ArrayList<Cliente> clientes2 = new ArrayList<Cliente>();
+					try {
+					
+						FileInputStream fis = new FileInputStream("clientes.txt");
+						InputStreamReader isr = new InputStreamReader(fis, "UTF8");
+						BufferedReader br = new BufferedReader(isr);
+						String linea = br.readLine();
+						while(linea!=null){
+							String[] bloques = linea.split("#");//dividir lineas en bloques entre "#"
+							String bloque1 = bloques[0];//definir nombres de los bloques
+							String bloque2 = bloques[1];
+						
+							
+							//dividir los bloques en campos
+							//BLOQUE1 (nombre,apellido,dni,num Socio y descuento)
+							String[] campo = bloque1.split(","); //bloques[0].split
+							String nomcl = campo[0];
+							Cliente cliente = new Cliente();
+							cliente.setNombre(nomcl);
+							String ap = campo[1];
+							cliente.setApellidos(ap);
+							String ni = campo[2];
+							cliente.setDni(ni);
+							int entero = Integer.parseInt(campo[3]);
+							cliente.setNumeroSocio(entero);
+							entero = Integer.parseInt(campo[4]);
+							cliente.setDescuento(entero);
+							Direccion direccion = new Direccion();
+							//dividir bloque 2 direccion (calle, numero, CP, localidad, provincia)
+							campo = bloque2.split(",");
+							String nomcalle = campo[0];
+							direccion.setNombreCalle(nomcalle);
+							entero = Integer.parseInt(campo[1]);
+							direccion.setNumeroPabellon(entero);
+							entero = Integer.parseInt(campo[2]);
+							direccion.setCodigoPostal(entero);
+							String loc = campo[3];
+							direccion.setLocalidad(loc);
+							String prov = campo[4];
+							direccion.setProvincia(prov);
+						}
+						
+						
+					}catch(Exception io) {
+						System.out.println("Error: "+io);
+						}
+				break;	
+		
+			}	
 		}			
 
     }
